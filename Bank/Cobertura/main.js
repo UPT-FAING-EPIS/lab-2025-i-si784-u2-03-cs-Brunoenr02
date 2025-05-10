@@ -213,7 +213,7 @@ var assemblies = [
   {
     "name": "Bank.Domain",
     "classes": [
-      { "name": "Bank.Domain.BankAccount", "rp": "Bank.Domain_BankAccount.html", "cl": 13, "ucl": 7, "cal": 20, "tl": 33, "cb": 4, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Bank.Domain.BankAccount", "rp": "Bank.Domain_BankAccount.html", "cl": 26, "ucl": 0, "cal": 26, "tl": 39, "cb": 10, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
