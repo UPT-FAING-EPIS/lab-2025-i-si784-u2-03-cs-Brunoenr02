@@ -1,4 +1,4 @@
-name: Actividad04 - NuGet Package
+name: Release NuGet Package
 
 on:
   push:
@@ -19,20 +19,24 @@ jobs:
         dotnet-version: 8.0
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: |
+        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        dotnet restore
 
     - name: Build project
-      run: dotnet build Bank/Bank.Domain/Bank.Domain.csproj --configuration Release
+      run: |
+        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        dotnet build --configuration Release
 
     - name: Pack NuGet package
       run: |
-        # Crear el paquete NuGet con la versión del tag
-        dotnet pack Bank/Bank.Domain/Bank.Domain.csproj --configuration Release --version $(git describe --tags --always)
-      
+        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        dotnet pack --configuration Release --version $(git describe --tags --always)
+
     - name: Publish NuGet package to GitHub Packages
       run: |
-        # Publicar el paquete NuGet en GitHub Packages
-        dotnet nuget push Bank/Bank.Domain/bin/Release/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        dotnet nuget push ./bin/Release/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create GitHub release
       run: |
