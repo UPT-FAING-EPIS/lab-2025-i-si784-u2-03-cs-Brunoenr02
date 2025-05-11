@@ -23,7 +23,7 @@ jobs:
       run: |
         cd Bank
         dotnet restore
-        
+
     - name: Ejecutar pruebas y generar cobertura
       run: |
         dotnet test Bank/Bank.Domain.Tests/Bank.Domain.Tests.csproj \
@@ -31,12 +31,15 @@ jobs:
           --results-directory ./TestResults \
           --logger trx
 
-    - name: Convertir cobertura a formato HTML
-      uses: danielpalme/ReportGenerator-GitHub-Action@5.1.26
-      with:
-        reports: './TestResults/**/coverage.cobertura.xml'
-        targetdir: 'coveragereport'
-        reporttypes: 'Html'
+    - name: Install ReportGenerator
+      run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+    - name: Generate Coverage Report
+      run: |
+        reportgenerator \
+          -reports:coverage/**/coverage.cobertura.xml \
+          -targetdir:coverage-report \
+          -reporttypes:Html
 
     - name: Publicar en GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
