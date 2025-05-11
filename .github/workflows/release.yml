@@ -1,0 +1,45 @@
+name: Actividad04 - NuGet Package
+
+on:
+  push:
+    tags:
+      - 'v*'  # Solo ejecutará con tags como 'v<versión>'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build Bank/Bank.Domain/Bank.Domain.csproj --configuration Release
+
+    - name: Pack NuGet package
+      run: |
+        # Crear el paquete NuGet con la versión del tag
+        dotnet pack Bank/Bank.Domain/Bank.Domain.csproj --configuration Release --version $(git describe --tags --always)
+      
+    - name: Publish NuGet package to GitHub Packages
+      run: |
+        # Publicar el paquete NuGet en GitHub Packages
+        dotnet nuget push Bank/Bank.Domain/bin/Release/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create GitHub release
+      run: |
+        tag_name=$(git describe --tags)
+        release_name="Release $tag_name"
+        body="Automated release for tag $tag_name"
+        curl -X POST \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -d '{"tag_name": "'"$tag_name"'", "name": "'"$release_name"'", "body": "'"$body"'", "draft": false, "prerelease": false}' \
+          "https://api.github.com/repos/${{ github.repository }}/releases"
