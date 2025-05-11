@@ -1,0 +1,43 @@
+name: Actividad03 - Pruebas unitarias
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+
+    - name: Instalar .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0
+
+    - name: Restaurar dependencias
+      run: dotnet restore
+
+    - name: Ejecutar pruebas y generar cobertura
+      run: |
+        dotnet test Bank/Bank.Domain.Tests/Bank.Domain.Tests.csproj \
+          --collect:"XPlat Code Coverage" \
+          --results-directory ./TestResults \
+          --logger trx
+
+    - name: Convertir cobertura a formato HTML
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.1.26
+      with:
+        reports: './TestResults/**/coverage.cobertura.xml'
+        targetdir: 'coveragereport'
+        reporttypes: 'Html'
+
+    - name: Publicar en GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coveragereport
