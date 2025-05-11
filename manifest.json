@@ -22,7 +22,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Bank.Domain.BankAccount",
-      "Summary": null
+      "Summary": "<p sourcefile=\"docs/Bank.Domain.BankAccount.yml\" sourcestartlinenumber=\"1\">Representa una cuenta bancaria con operaciones de débito y crédito.</p>\n"
     },
     {
       "type": "ManagedReference",
