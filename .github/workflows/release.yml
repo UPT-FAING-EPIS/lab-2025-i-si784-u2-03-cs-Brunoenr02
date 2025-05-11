@@ -29,16 +29,16 @@ jobs:
         run: sed -i.bak "s|<Version>.*</Version>|<Version>${VERSION}</Version>|" Bank/Bank.Domain/Bank.Domain.csproj
 
       - name: Clean sed backup file
-        run: rm ank/Bank.Domain/Bank.Domain.csproj.bak
+        run: rm Bank/Bank.Domain/Bank.Domain.csproj.bak
 
       - name: Restore dependencies
-        run: dotnet restore ank/Bank.Domain/Bank.Domain.csproj
+        run: dotnet restore Bank/Bank.Domain/Bank.Domain.csproj
 
       - name: Build the project
-        run: dotnet build ank/Bank.Domain/Bank.Domain.csproj --configuration Release
+        run: dotnet build Bank/Bank.Domain/Bank.Domain.csproj --configuration Release
 
       - name: Pack the NuGet package
-        run: dotnet pack ank/Bank.Domain/Bank.Domain.csproj --configuration Release --output ./nupkg
+        run: dotnet pack Bank/Bank.Domain/Bank.Domain.csproj --configuration Release --output ./nupkg
 
       - name: Publish package to GitHub Packages
         run: dotnet nuget push "./nupkg/*.nupkg" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
