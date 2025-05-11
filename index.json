@@ -22,6 +22,6 @@
   "index.html": {
     "href": "index.html",
     "title": "Bienvenido a la documentación de Bank | Bank.Domain",
-    "summary": "Bienvenido a la documentación de Bank Esta es la documentación del proyecto Bank.Domain, generada automáticamente con DocFX. Clases principales BankAccount"
+    "summary": "Bienvenido a la documentación de Bank Esta es la documentación del proyecto Bank.Domain, generada automáticamente con DocFX. Pruebas Cobertura Clases BankAccount"
   }
 }
