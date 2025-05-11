@@ -1,4 +1,4 @@
-name: Release NuGet Package
+name: Actividad04 - Release NuGet Package
 
 on:
   push:
