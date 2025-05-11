@@ -20,8 +20,10 @@ jobs:
         dotnet-version: 8.0
 
     - name: Restaurar dependencias
-      run: dotnet restore
-
+      run: |
+        cd Bank
+        dotnet restore
+        
     - name: Ejecutar pruebas y generar cobertura
       run: |
         dotnet test Bank/Bank.Domain.Tests/Bank.Domain.Tests.csproj \
