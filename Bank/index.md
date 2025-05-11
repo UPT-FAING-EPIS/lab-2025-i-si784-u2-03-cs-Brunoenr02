@@ -2,6 +2,10 @@
 
 Esta es la documentación del proyecto **Bank.Domain**, generada automáticamente con DocFX.
 
-## Clases principales
+## Pruebas
+
+- [Cobertura](Cobertura/index.html)
+
+## Clases
 
 - [BankAccount](xref:Bank.Domain.BankAccount)
