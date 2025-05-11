@@ -20,22 +20,22 @@ jobs:
 
     - name: Restore dependencies
       run: |
-        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        cd Bank  # Cambia a la carpeta donde está tu archivo .csproj
         dotnet restore
 
     - name: Build project
       run: |
-        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        cd Bank  # Cambia a la carpeta donde está tu archivo .csproj
         dotnet build --configuration Release
 
     - name: Pack NuGet package
       run: |
-        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        cd Bank # Cambia a la carpeta donde está tu archivo .csproj
         dotnet pack --configuration Release --version $(git describe --tags --always)
 
     - name: Publish NuGet package to GitHub Packages
       run: |
-        cd Bank/Bank.Domain  # Cambia a la carpeta donde está tu archivo .csproj
+        cd Bank # Cambia a la carpeta donde está tu archivo .csproj
         dotnet nuget push ./bin/Release/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create GitHub release
