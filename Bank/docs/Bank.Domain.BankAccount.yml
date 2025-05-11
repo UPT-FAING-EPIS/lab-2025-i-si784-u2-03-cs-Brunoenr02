@@ -27,10 +27,12 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: BankAccount
     path: Bank.Domain/BankAccount.cs
-    startLine: 4
+    startLine: 7
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Representa una cuenta bancaria con operaciones de débito y crédito.
+  example: []
   syntax:
     content: public class BankAccount
     content.vb: Public Class BankAccount
@@ -62,10 +64,12 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: DebitAmountExceedsBalanceMessage
     path: Bank.Domain/BankAccount.cs
-    startLine: 6
+    startLine: 12
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Mensaje de error cuando el monto a debitar excede el saldo.
+  example: []
   syntax:
     content: public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance"
     return:
@@ -89,10 +93,12 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: DebitAmountLessThanZeroMessage
     path: Bank.Domain/BankAccount.cs
-    startLine: 7
+    startLine: 17
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Mensaje de error cuando el monto a debitar es menor que cero.
+  example: []
   syntax:
     content: public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero"
     return:
@@ -116,10 +122,12 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: CreditAmountLessThanZeroMessage
     path: Bank.Domain/BankAccount.cs
-    startLine: 8
+    startLine: 22
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Mensaje de error cuando el monto a acreditar es menor que cero.
+  example: []
   syntax:
     content: public const string CreditAmountLessThanZeroMessage = "Credit amount is less than zero"
     return:
@@ -143,17 +151,21 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: .ctor
     path: Bank.Domain/BankAccount.cs
-    startLine: 13
+    startLine: 32
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Inicializa una nueva instancia de <xref href="Bank.Domain.BankAccount" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public BankAccount(string customerName, double balance)
     parameters:
     - id: customerName
       type: System.String
+      description: Nombre del cliente.
     - id: balance
       type: System.Double
+      description: Saldo inicial.
     content.vb: Public Sub New(customerName As String, balance As Double)
   overload: Bank.Domain.BankAccount.#ctor*
   nameWithType.vb: BankAccount.New(String, Double)
@@ -177,10 +189,12 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: CustomerName
     path: Bank.Domain/BankAccount.cs
-    startLine: 19
+    startLine: 41
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Obtiene el nombre del cliente.
+  example: []
   syntax:
     content: public string CustomerName { get; }
     parameters: []
@@ -206,10 +220,12 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: Balance
     path: Bank.Domain/BankAccount.cs
-    startLine: 20
+    startLine: 46
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Obtiene el saldo de la cuenta.
+  example: []
   syntax:
     content: public double Balance { get; }
     parameters: []
@@ -235,15 +251,18 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: Debit
     path: Bank.Domain/BankAccount.cs
-    startLine: 22
+    startLine: 52
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Debita un monto de la cuenta.
+  example: []
   syntax:
     content: public void Debit(double amount)
     parameters:
     - id: amount
       type: System.Double
+      description: Monto a debitar.
     content.vb: Public Sub Debit(amount As Double)
   overload: Bank.Domain.BankAccount.Debit*
   nameWithType.vb: BankAccount.Debit(Double)
@@ -267,15 +286,18 @@ items:
       repo: https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02.git
     id: Credit
     path: Bank.Domain/BankAccount.cs
-    startLine: 31
+    startLine: 65
   assemblies:
   - Bank.Domain
   namespace: Bank.Domain
+  summary: Acredita un monto en la cuenta.
+  example: []
   syntax:
     content: public void Credit(double amount)
     parameters:
     - id: amount
       type: System.Double
+      description: Monto a acreditar.
     content.vb: Public Sub Credit(amount As Double)
   overload: Bank.Domain.BankAccount.Credit*
   nameWithType.vb: BankAccount.Credit(Double)
@@ -552,6 +574,12 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Bank.Domain.BankAccount
+  commentId: T:Bank.Domain.BankAccount
+  href: Bank.Domain.BankAccount.html
+  name: BankAccount
+  nameWithType: BankAccount
+  fullName: Bank.Domain.BankAccount
 - uid: Bank.Domain.BankAccount.#ctor*
   commentId: Overload:Bank.Domain.BankAccount.#ctor
   href: Bank.Domain.BankAccount.html#Bank_Domain_BankAccount__ctor_System_String_System_Double_

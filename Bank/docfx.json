@@ -16,12 +16,11 @@
   "build": {
     "content": [
       {
-        "files": [
-          "**/*.{md,yml}"
-        ],
-        "exclude": [
-          "_site/**"
-        ]
+        "files": [ "index.md" ]
+      },
+      {
+        "files": [ "**/*.{md,yml}" ],
+        "exclude": [ "_site/**" ]
       }
     ],
     "resource": [
