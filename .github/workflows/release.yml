@@ -1,49 +1,51 @@
-name: Actividad04 - Release NuGet Package
+name: Actividad04 - Generar NuGetPackage
 
 on:
   push:
     tags:
-      - 'v*'  # Solo ejecutará con tags como 'v<versión>'
+      - 'v*'
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: |
-        cd Bank  # Cambia a la carpeta donde está tu archivo .csproj
-        dotnet restore
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-    - name: Build project
-      run: |
-        cd Bank  # Cambia a la carpeta donde está tu archivo .csproj
-        dotnet build --configuration Release
+      - name: Set version in .csproj
+        run: sed -i.bak "s|<Version>.*</Version>|<Version>${VERSION}</Version>|" Bank/Bank.Domain/Bank.Domain.csproj
 
-    - name: Pack NuGet package
-      run: |
-        cd Bank # Cambia a la carpeta donde está tu archivo .csproj
-        dotnet pack --configuration Release --version $(git describe --tags --always)
+      - name: Clean sed backup file
+        run: rm ank/Bank.Domain/Bank.Domain.csproj.bak
 
-    - name: Publish NuGet package to GitHub Packages
-      run: |
-        cd Bank # Cambia a la carpeta donde está tu archivo .csproj
-        dotnet nuget push ./bin/Release/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore dependencies
+        run: dotnet restore ank/Bank.Domain/Bank.Domain.csproj
 
-    - name: Create GitHub release
-      run: |
-        tag_name=$(git describe --tags)
-        release_name="Release $tag_name"
-        body="Automated release for tag $tag_name"
-        curl -X POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -d '{"tag_name": "'"$tag_name"'", "name": "'"$release_name"'", "body": "'"$body"'", "draft": false, "prerelease": false}' \
-          "https://api.github.com/repos/${{ github.repository }}/releases"
+      - name: Build the project
+        run: dotnet build ank/Bank.Domain/Bank.Domain.csproj --configuration Release
+
+      - name: Pack the NuGet package
+        run: dotnet pack ank/Bank.Domain/Bank.Domain.csproj --configuration Release --output ./nupkg
+
+      - name: Publish package to GitHub Packages
+        run: dotnet nuget push "./nupkg/*.nupkg" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          files: ./nupkg/*.nupkg
