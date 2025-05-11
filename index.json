@@ -1,0 +1,22 @@
+{
+  "docs/Bank.Domain.BankAccount.html": {
+    "href": "docs/Bank.Domain.BankAccount.html",
+    "title": "Class BankAccount | Bank.Domain",
+    "summary": "Class BankAccount Namespace Bank.Domain Assembly Bank.Domain.dll public class BankAccount Inheritance object BankAccount Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors BankAccount(string, double) public BankAccount(string customerName, double balance) Parameters customerName string balance double Fields CreditAmountLessThanZeroMessage public const string CreditAmountLessThanZeroMessage = \"Credit amount is less than zero\" Field Value string DebitAmountExceedsBalanceMessage public const string DebitAmountExceedsBalanceMessage = \"Debit amount exceeds balance\" Field Value string DebitAmountLessThanZeroMessage public const string DebitAmountLessThanZeroMessage = \"Debit amount is less than zero\" Field Value string Properties Balance public double Balance { get; } Property Value double CustomerName public string CustomerName { get; } Property Value string Methods Credit(double) public void Credit(double amount) Parameters amount double Debit(double) public void Debit(double amount) Parameters amount double"
+  },
+  "docs/Bank.Domain.Tests.BankAccountTests.html": {
+    "href": "docs/Bank.Domain.Tests.BankAccountTests.html",
+    "title": "Class BankAccountTests | Bank.Domain",
+    "summary": "Class BankAccountTests Namespace Bank.Domain.Tests Assembly Bank.Domain.Tests.dll public class BankAccountTests Inheritance object BankAccountTests Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods Constructor_SetsCustomerNameAndBalanceCorrectly() [Test] public void Constructor_SetsCustomerNameAndBalanceCorrectly() Credit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange() [Test] public void Credit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange() Credit_WithValidAmount_UpdatesBalance() [Test] public void Credit_WithValidAmount_UpdatesBalance() Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange() [Test] public void Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange() Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRange() [Test] public void Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRange() Debit_WithValidAmount_UpdatesBalance() [Test] public void Debit_WithValidAmount_UpdatesBalance()"
+  },
+  "docs/Bank.Domain.Tests.html": {
+    "href": "docs/Bank.Domain.Tests.html",
+    "title": "Namespace Bank.Domain.Tests | Bank.Domain",
+    "summary": "Namespace Bank.Domain.Tests Classes BankAccountTests"
+  },
+  "docs/Bank.Domain.html": {
+    "href": "docs/Bank.Domain.html",
+    "title": "Namespace Bank.Domain | Bank.Domain",
+    "summary": "Namespace Bank.Domain Classes BankAccount"
+  }
+}
