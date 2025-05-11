@@ -18,5 +18,10 @@
     "href": "docs/Bank.Domain.html",
     "title": "Namespace Bank.Domain | Bank.Domain",
     "summary": "Namespace Bank.Domain Classes BankAccount Representa una cuenta bancaria con operaciones de débito y crédito."
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "Bienvenido a la documentación de Bank | Bank.Domain",
+    "summary": "Bienvenido a la documentación de Bank Esta es la documentación del proyecto Bank.Domain, generada automáticamente con DocFX. Clases principales BankAccount"
   }
 }
