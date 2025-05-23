@@ -9,7 +9,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <PackageDescription>Mi Bank Domain</PackageDescription>
-    <PackageId>Mi.Bank.Domain.Brunoenr02</PackageId>
+    <PackageId>Bank.Domain.u2.Brunoenr02</PackageId>
   </PropertyGroup>
 
 </Project>
