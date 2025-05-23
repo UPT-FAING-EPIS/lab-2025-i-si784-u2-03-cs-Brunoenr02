@@ -9,7 +9,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <PackageDescription>Mi Bank Domain</PackageDescription>
-    <PackageId>BankDomain.Brunoenr02</PackageId>
+    <PackageId>BankDomainBrunoenr02</PackageId>
+    <RepositoryUrl>https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-03-cs-Brunoenr02</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>
